@@ -1,7 +1,6 @@
 import {
   Group,
   Home,
-  Padding,
   Pages,
   People,
   Settings,
@@ -12,13 +11,19 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  PaletteMode,
   Switch,
 } from "@mui/material";
 import React from "react";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import ToggleOnIcon from "@mui/icons-material/ToggleOn";
+import { useMyContext } from "../../context";
 
-const ListItems = () => {
+const ListItems: React.FC = () => {
+  const { mode, setMode } = useMyContext();
+  const toggleMode: any = () => {
+    setMode((prev) => (prev === "light" ? "dark" : "light"));
+  };
   return (
     <>
       <ListItem>
@@ -82,7 +87,11 @@ const ListItems = () => {
           <ListItemIcon>
             <ToggleOnIcon fontSize="large" />
           </ListItemIcon>
-          <Switch aria-label="Switch demo" />
+          <Switch
+            aria-label="Switch demo"
+            checked={mode === "light"}
+            onChange={toggleMode}
+          />
         </ListItemButton>
       </ListItem>
     </>

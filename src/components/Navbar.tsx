@@ -20,18 +20,22 @@ const Navbar: React.FC = () => {
     setOpen((current) => !current);
   };
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Toolbar className="flex justify-between">
         <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
           Navbar
         </Typography>
         <EmojiNatureIcon
-          sx={{ display: { xs: "block", sm: "none" } }}
-          className="text-yellow-200"
+          sx={{ display: { xs: "block ", sm: "none" } }}
+          className=" w-12 text-4xl"
         />
         <Box className="flex items-center bg-white text-gray-300 px-6 rounded">
           <SearchIcon />
-          <InputBase placeholder="search..." className=" text-lg w-[300px]" />
+          <InputBase
+            placeholder="search..."
+            className=" text-lg"
+            sx={{ width: { xs: "fit" } }}
+          />
         </Box>
         <Box
           display={"flex"}
@@ -57,9 +61,12 @@ const Navbar: React.FC = () => {
           <Avatar
             src="img.jpg"
             onClick={handleOnclick}
-            className="cursor-pointer"
+            className="cursor-pointer "
+            sx={{ ml: { xs: "10px" } }}
           />
-          <Typography variant="h6">John</Typography>
+          <Typography variant="h6" sx={{ display: { xs: "none" } }}>
+            John
+          </Typography>
         </Box>
         <Menu
           id="basic-menu"
@@ -69,7 +76,7 @@ const Navbar: React.FC = () => {
             "aria-labelledby": "basic-button",
           }}
           anchorOrigin={{ vertical: "top", horizontal: "right" }}
-          sx={{ mt: 5 }}>
+          sx={{ mt: 5, ml: -4 }}>
           <MenuItem>Profile</MenuItem>
           <MenuItem>My account</MenuItem>
           <MenuItem>Logout</MenuItem>
